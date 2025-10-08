@@ -1,38 +1,41 @@
 public class Product {
-    private String name;
+    private String nameProduct;
     private double price;
-    private int quantity;
+    private int code;
 
-    public Product(){
+    public Product(){}
+
+    public Product(String nameProduct, double price, int code){
 
     }
 
-    public Product(String name, double price, int quantity){
-        setName(name);
-        setPrice(price);
-        setQuantity(quantity);
+    public void setNameProduct(String nameProduct){
+        if(nameProduct == null || nameProduct.isBlank()){
+            throw new IllegalArgumentException("Product name cannot be empty");
+        }
+        this.nameProduct = nameProduct;
     }
 
-    public String getName(){
-        return name;
-    }
-    public void setName(String name){
-        this.name = name;
+    public String getNameProduct(){
+        return nameProduct;
     }
 
-    public double getPrice(){
-        return price;
-    }
+    public void setPrice(double price){
+        if(price <= 0) throw new IllegalArgumentException("the product cannot be free");
 
-    public void setPrice(double price) {
         this.price = price;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public double getPrice() {
+        return price;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setCode(int code) {
+        if(code <= 0) throw new IllegalArgumentException("the code can't be less than 0");
+        this.code = code;
+    }
+
+    public int getCode() {
+        return code;
     }
 }
